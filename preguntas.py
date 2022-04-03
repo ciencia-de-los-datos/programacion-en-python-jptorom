@@ -29,10 +29,9 @@ def pregunta_01():
     suma = 0
     for row in columns:
         suma += int(row[1])
-    print(suma)
 
-    return
-pregunta_01()
+    return suma
+
 
 
 def pregunta_02():
@@ -65,9 +64,9 @@ def pregunta_02():
     xy = dict(sorted(frecuencia.items(), key=lambda item: item[0]))
     '''Se convierte el diccionario en tuplas'''
     l1 = list(xy.items())
-    l1
-    return
-pregunta_02()
+    
+    return l1
+
 
 
 def pregunta_03():
@@ -106,11 +105,11 @@ def pregunta_03():
     xy = dict(sorted(sumatoria.items(), key=lambda item: item[0]))
     '''Se convierte el diccionario en tuplas'''
     l1 = list(xy.items())
-    l1
+
 
     
-    return
-pregunta_03()
+    return l1
+
 
 def pregunta_04():
     """
@@ -157,9 +156,8 @@ def pregunta_04():
     xy = dict(sorted(frecuencia.items(), key=lambda item: item[0]))
     '''Se convierte el diccionario en tuplas'''
     l1 = list(xy.items())
-    l1
-    return
-pregunta_04()
+    
+    return l1
 
 def pregunta_05():
     """
@@ -197,9 +195,8 @@ def pregunta_05():
             dicc[clave].append(val)
     dicc = [(clave,max(valor),min(valor)) for clave,valor in dicc.items()]
     dicc = sorted(dicc,key = itemgetter(0), reverse = False)
-    dicc
-    return
-pregunta_05()
+    
+    return dicc
 
 def pregunta_06():
     """
