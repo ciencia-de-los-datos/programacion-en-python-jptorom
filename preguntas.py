@@ -32,7 +32,7 @@ def pregunta_01():
     print(suma)
 
     return
-
+pregunta_01()
 
 
 def pregunta_02():
@@ -67,7 +67,7 @@ def pregunta_02():
     l1 = list(xy.items())
     l1
     return
-
+pregunta_02()
 
 
 def pregunta_03():
@@ -110,7 +110,7 @@ def pregunta_03():
 
     
     return
-
+pregunta_03()
 
 def pregunta_04():
     """
@@ -159,7 +159,7 @@ def pregunta_04():
     l1 = list(xy.items())
     l1
     return
-
+pregunta_04()
 
 def pregunta_05():
     """
@@ -199,7 +199,7 @@ def pregunta_05():
     dicc = sorted(dicc,key = itemgetter(0), reverse = False)
     dicc
     return
-
+pregunta_05()
 
 def pregunta_06():
     """
