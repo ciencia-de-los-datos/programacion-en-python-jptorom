@@ -375,7 +375,34 @@ def pregunta_09():
     }
 
     """
-    return
+    with open ("data.csv","r") as file:
+        data = file.readlines()
+    datatemp = list()
+    data1= [row[:-1] for row in data]
+    data2 = [str(row).split("\t")[-1] for row in data1]
+    data4 = []
+    data5=[]
+    for row in data2:
+        a= row.split(",")
+        data4.extend(a)
+    for row in data4:
+        b= row.split(":")
+        data5.extend(b)
+    x= data5[0::2]
+    y = data5[1::2]
+    xy = zip(x,y)
+    dicc= {}
+    for row in xy:
+        clave = row[0]
+        valor = []
+        val = int(row[1])
+        if clave in dicc:
+            dicc[clave] += 1
+        else:
+            dicc[clave] = 1
+    xy = dict(sorted(dicc.items(), key=lambda item: item[0]))
+    
+    return xy
 
 
 def pregunta_10():
