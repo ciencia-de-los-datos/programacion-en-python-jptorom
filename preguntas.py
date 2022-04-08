@@ -324,7 +324,35 @@ def pregunta_08():
     ]
 
     """
-    return
+    import csv
+    from collections import Counter
+    from operator import itemgetter
+    with open("data.csv",newline='') as t:
+        datos = csv.reader(t,delimiter ="\t")
+        columns =list(datos)
+    l1 = [row[0] for row in columns]
+    l2 = [int(fila[1]) for fila in columns]
+    l3 = set(list(zip(l1,l2)))
+    l5 = sorted(l3, key = lambda ord : ord[0])
+    dicc= {}
+    for row in l5:
+        clave = row[1]
+        valor = []
+        val = row[0]
+        if clave in dicc:
+            if val in valor:
+                next
+            else:
+                dicc[clave].append(val)
+        else:
+            dicc[clave]=valor
+            dicc[clave].append(val)
+    '''Se ordena el diccionario en orden alfabetico'''
+    xy = dict(sorted(dicc.items(), key=lambda item: item[0]))
+    '''Se convierte el diccionario en tuplas'''
+    l4 = list(xy.items())
+    
+    return l4
 
 
 def pregunta_09():
