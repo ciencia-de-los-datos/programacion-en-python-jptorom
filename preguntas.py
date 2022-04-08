@@ -275,7 +275,28 @@ def pregunta_07():
     ]
 
     """
-    return
+    import csv
+    from collections import Counter
+    from operator import itemgetter
+    with open("data.csv",newline='') as t:
+        datos = csv.reader(t,delimiter ="\t")
+        columns =list(datos)
+    l1 = [row[0] for row in columns]
+    l2 = [int(fila[1]) for fila in columns]
+    l3 = list(zip(l1,l2))
+    dicc= {}
+    for row in l3:
+        clave = row[1]
+        valor = []
+        val = row[0]
+        if clave in dicc:
+            dicc[clave].append(val)
+        else:
+            dicc[clave]=valor
+            dicc[clave].append(val)
+    xy = dict(sorted(dicc.items(), key=lambda item: item[0]))
+    
+    return xy
 
 
 def pregunta_08():
