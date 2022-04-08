@@ -423,7 +423,25 @@ def pregunta_10():
 
 
     """
-    return
+    '''Se extrae la información del csv'''
+    import csv
+    from operator import itemgetter
+    with open ("data.csv","r") as file:
+        data = file.readlines()
+    data1= [row for row in data]
+    '''Necesito que la columna de Letras se repita por cada registro de la columna 5'''
+    data2 = [str(row).split("\t")[-1].split(",") for row in data1]
+    '''Necesito que la columna de Letras se repita por cada registro de la columna 4'''
+    data3 = [str(row).split("\t")[-2].split(",") for row in data1]
+
+    '''Voy a contar el número de elementos que tiene cada columna 5'''
+    data99 = [len(row) for row in data2]
+    data98 = [row[0] for row in data]
+    '''Voy a contar el número de elementos que tiene cada columna 4'''
+    data97 = [len(row) for row in data3]
+    data96=zip(data98,data97,data99)
+    
+    return list(data96)
 
 
 def pregunta_11():
