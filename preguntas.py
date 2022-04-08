@@ -295,8 +295,11 @@ def pregunta_07():
             dicc[clave]=valor
             dicc[clave].append(val)
     xy = dict(sorted(dicc.items(), key=lambda item: item[0]))
+    '''Se convierte el diccionario en tuplas'''
+    l1 = list(xy.items())
+    l1
     
-    return xy
+    return l1
 
 
 def pregunta_08():
