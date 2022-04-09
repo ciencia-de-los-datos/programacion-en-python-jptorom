@@ -459,10 +459,54 @@ def pregunta_11():
         "f": 134,
         "g": 35,
     }
-
+    
 
     """
-    return
+    '''Se extrae la información del csv'''
+    import csv
+    from operator import itemgetter
+    with open ("data.csv","r") as file:
+        data = file.readlines()
+    data1= [row for row in data]
+
+    '''Necesito que la columna de Letras se repita por cada registro de la columna 4'''
+    data3 = [str(row).split("\t")[-2] for row in data1]
+    data98 = [row[2] for row in data]
+    data4 = []
+    data5=[]
+    '''Voy a contar el número de elementos que tiene cada columna 5'''
+    data97 = [len(row) for row in data3]
+    data95 =[]
+    for row1,row2 in zip(data3,data98):
+        a = str(row1+","+row2)
+        data95.append(a.split(","))
+
+    data50 = [row[0] for row in data95]
+    data51 = [str(row).split(",") for row in data95]
+
+    data52 = [row[0] for row in data51]
+    data53 =[]
+
+    for row in data51:
+        for value in row[:-1]:
+            a= list(value + "," + row[-1])
+            data53.append(a)
+    data54 =[row[2] for row in data53]
+    data55 =[int(row[7]) for row in data53]
+    data56 = zip(data54,data55)
+    sumatoria= {}
+    for row in data56:
+        key = row[0]
+        value = int(row[1])
+        if key in sumatoria:
+            sumatoria[key] += value
+        else:
+            sumatoria[key] = value
+    '''Se ordena el diccionario en orden alfabetico'''
+    xy = dict(sorted(sumatoria.items(), key=lambda item: item[0]))
+    
+
+    return xy
 
 
 def pregunta_12():
