@@ -21,7 +21,17 @@ def pregunta_01():
     214
 
     """
-    return
+    import csv
+    with open("data.csv",newline='') as t:
+        datos = csv.reader(t,delimiter ="\t")
+        columns =list(datos)
+    
+    suma = 0
+    for row in columns:
+        suma += int(row[1])
+
+    return suma
+
 
 
 def pregunta_02():
@@ -39,7 +49,24 @@ def pregunta_02():
     ]
 
     """
-    return
+    import csv
+    with open("data.csv",newline='') as t:
+        datos = csv.reader(t,delimiter ="\t")
+        columns =list(datos)
+    listica = [row[0] for row in columns]
+    frecuencia = {}
+    for n in listica:
+        if n in frecuencia:
+            frecuencia[n] += 1
+        else: 
+            frecuencia[n] =1
+    '''Se ordena el diccionario en orden alfabetico'''
+    xy = dict(sorted(frecuencia.items(), key=lambda item: item[0]))
+    '''Se convierte el diccionario en tuplas'''
+    l1 = list(xy.items())
+    
+    return l1
+
 
 
 def pregunta_03():
@@ -57,7 +84,31 @@ def pregunta_03():
     ]
 
     """
-    return
+    import csv
+    from collections import Counter
+    with open("data.csv",newline='') as t:
+        datos = csv.reader(t,delimiter ="\t")
+        columns =list(datos)
+    listica = list()
+    for i in columns:
+        a= i[:2]
+        listica.append(a)
+    sumatoria= {}
+    for row in listica:
+        key = row[0]
+        value = int(row[1])
+        if key in sumatoria:
+            sumatoria[key] += value
+        else:
+            sumatoria[key] = value
+    '''Se ordena el diccionario en orden alfabetico'''
+    xy = dict(sorted(sumatoria.items(), key=lambda item: item[0]))
+    '''Se convierte el diccionario en tuplas'''
+    l1 = list(xy.items())
+
+
+    
+    return l1
 
 
 def pregunta_04():
@@ -82,8 +133,31 @@ def pregunta_04():
     ]
 
     """
-    return
-
+    import csv
+    from collections import Counter
+    with open("data.csv",newline='') as t:
+        datos = csv.reader(t,delimiter ="\t")
+        columns =list(datos)
+    listica = list()
+    for i in columns:
+        a= i[2]
+        listica.append(a)
+    listota = list()
+    for m in listica:
+        b=m[5:7]
+        listota.append(b)
+    frecuencia={}
+    for n in listota:
+        if n in frecuencia:
+            frecuencia[n] += 1
+        else: 
+            frecuencia[n] =1
+    '''Se ordena el diccionario en orden alfabetico'''
+    xy = dict(sorted(frecuencia.items(), key=lambda item: item[0]))
+    '''Se convierte el diccionario en tuplas'''
+    l1 = list(xy.items())
+    
+    return l1
 
 def pregunta_05():
     """
@@ -98,10 +172,31 @@ def pregunta_05():
         ("D", 8, 3),
         ("E", 9, 1),
     ]
-
+    
     """
-    return
-
+    import csv
+    from collections import Counter
+    from operator import itemgetter
+    with open("data.csv",newline='') as t:
+        datos = csv.reader(t,delimiter ="\t")
+        columns =list(datos)
+    l1 = [row[0] for row in columns]
+    l2 = [int(fila[1]) for fila in columns]
+    l3 = list(zip(l1,l2))
+    dicc= {}
+    for row in l3:
+        clave = row[0]
+        valor = []
+        val = row[1]
+        if clave in dicc:
+            dicc[clave].append(val)
+        else:
+            dicc[clave]=valor
+            dicc[clave].append(val)
+    dicc = [(clave,max(valor),min(valor)) for clave,valor in dicc.items()]
+    dicc = sorted(dicc,key = itemgetter(0), reverse = False)
+    
+    return dicc
 
 def pregunta_06():
     """
@@ -125,7 +220,38 @@ def pregunta_06():
     ]
 
     """
-    return
+    import csv
+    from operator import itemgetter
+    with open ("data.csv","r") as file:
+        data = file.readlines()
+    datatemp = list()
+    data1= [row[:-1] for row in data]
+    data2 = [str(row).split("\t")[-1] for row in data1]
+    data4 = []
+    data5=[]
+    for row in data2:
+        a= row.split(",")
+        data4.extend(a)
+    for row in data4:
+        b= row.split(":")
+        data5.extend(b)
+    x= data5[0::2]
+    y = data5[1::2]
+    xy = zip(x,y)
+    dicc= {}
+    for row in xy:
+        clave = row[0]
+        valor = []
+        val = int(row[1])
+        if clave in dicc:
+            dicc[clave].append(val)
+        else:
+            dicc[clave]=valor
+            dicc[clave].append(val)
+    dicc = [(clave,min(valor),max(valor)) for clave,valor in dicc.items()]
+    dicc = sorted(dicc,key = itemgetter(0), reverse = False)
+    
+    return dicc
 
 
 def pregunta_07():
@@ -149,7 +275,31 @@ def pregunta_07():
     ]
 
     """
-    return
+    import csv
+    from collections import Counter
+    from operator import itemgetter
+    with open("data.csv",newline='') as t:
+        datos = csv.reader(t,delimiter ="\t")
+        columns =list(datos)
+    l1 = [row[0] for row in columns]
+    l2 = [int(fila[1]) for fila in columns]
+    l3 = list(zip(l1,l2))
+    dicc= {}
+    for row in l3:
+        clave = row[1]
+        valor = []
+        val = row[0]
+        if clave in dicc:
+            dicc[clave].append(val)
+        else:
+            dicc[clave]=valor
+            dicc[clave].append(val)
+    xy = dict(sorted(dicc.items(), key=lambda item: item[0]))
+    '''Se convierte el diccionario en tuplas'''
+    l1 = list(xy.items())
+    l1
+    
+    return l1
 
 
 def pregunta_08():
@@ -174,7 +324,35 @@ def pregunta_08():
     ]
 
     """
-    return
+    import csv
+    from collections import Counter
+    from operator import itemgetter
+    with open("data.csv",newline='') as t:
+        datos = csv.reader(t,delimiter ="\t")
+        columns =list(datos)
+    l1 = [row[0] for row in columns]
+    l2 = [int(fila[1]) for fila in columns]
+    l3 = set(list(zip(l1,l2)))
+    l5 = sorted(l3, key = lambda ord : ord[0])
+    dicc= {}
+    for row in l5:
+        clave = row[1]
+        valor = []
+        val = row[0]
+        if clave in dicc:
+            if val in valor:
+                next
+            else:
+                dicc[clave].append(val)
+        else:
+            dicc[clave]=valor
+            dicc[clave].append(val)
+    '''Se ordena el diccionario en orden alfabetico'''
+    xy = dict(sorted(dicc.items(), key=lambda item: item[0]))
+    '''Se convierte el diccionario en tuplas'''
+    l4 = list(xy.items())
+    
+    return l4
 
 
 def pregunta_09():
@@ -197,7 +375,34 @@ def pregunta_09():
     }
 
     """
-    return
+    with open ("data.csv","r") as file:
+        data = file.readlines()
+    datatemp = list()
+    data1= [row[:-1] for row in data]
+    data2 = [str(row).split("\t")[-1] for row in data1]
+    data4 = []
+    data5=[]
+    for row in data2:
+        a= row.split(",")
+        data4.extend(a)
+    for row in data4:
+        b= row.split(":")
+        data5.extend(b)
+    x= data5[0::2]
+    y = data5[1::2]
+    xy = zip(x,y)
+    dicc= {}
+    for row in xy:
+        clave = row[0]
+        valor = []
+        val = int(row[1])
+        if clave in dicc:
+            dicc[clave] += 1
+        else:
+            dicc[clave] = 1
+    xy = dict(sorted(dicc.items(), key=lambda item: item[0]))
+    
+    return xy
 
 
 def pregunta_10():
@@ -218,7 +423,25 @@ def pregunta_10():
 
 
     """
-    return
+    '''Se extrae la información del csv'''
+    import csv
+    from operator import itemgetter
+    with open ("data.csv","r") as file:
+        data = file.readlines()
+    data1= [row for row in data]
+    '''Necesito que la columna de Letras se repita por cada registro de la columna 5'''
+    data2 = [str(row).split("\t")[-1].split(",") for row in data1]
+    '''Necesito que la columna de Letras se repita por cada registro de la columna 4'''
+    data3 = [str(row).split("\t")[-2].split(",") for row in data1]
+
+    '''Voy a contar el número de elementos que tiene cada columna 5'''
+    data99 = [len(row) for row in data2]
+    data98 = [row[0] for row in data]
+    '''Voy a contar el número de elementos que tiene cada columna 4'''
+    data97 = [len(row) for row in data3]
+    data96=zip(data98,data97,data99)
+    
+    return list(data96)
 
 
 def pregunta_11():
@@ -236,10 +459,54 @@ def pregunta_11():
         "f": 134,
         "g": 35,
     }
-
+    
 
     """
-    return
+    '''Se extrae la información del csv'''
+    import csv
+    from operator import itemgetter
+    with open ("data.csv","r") as file:
+        data = file.readlines()
+    data1= [row for row in data]
+
+    '''Necesito que la columna de Letras se repita por cada registro de la columna 4'''
+    data3 = [str(row).split("\t")[-2] for row in data1]
+    data98 = [row[2] for row in data]
+    data4 = []
+    data5=[]
+    '''Voy a contar el número de elementos que tiene cada columna 5'''
+    data97 = [len(row) for row in data3]
+    data95 =[]
+    for row1,row2 in zip(data3,data98):
+        a = str(row1+","+row2)
+        data95.append(a.split(","))
+
+    data50 = [row[0] for row in data95]
+    data51 = [str(row).split(",") for row in data95]
+
+    data52 = [row[0] for row in data51]
+    data53 =[]
+
+    for row in data51:
+        for value in row[:-1]:
+            a= list(value + "," + row[-1])
+            data53.append(a)
+    data54 =[row[2] for row in data53]
+    data55 =[int(row[7]) for row in data53]
+    data56 = zip(data54,data55)
+    sumatoria= {}
+    for row in data56:
+        key = row[0]
+        value = int(row[1])
+        if key in sumatoria:
+            sumatoria[key] += value
+        else:
+            sumatoria[key] = value
+    '''Se ordena el diccionario en orden alfabetico'''
+    xy = dict(sorted(sumatoria.items(), key=lambda item: item[0]))
+    
+
+    return xy
 
 
 def pregunta_12():
@@ -257,4 +524,33 @@ def pregunta_12():
     }
 
     """
-    return
+    import csv
+    with open ("data.csv","r") as file:
+        data = file.readlines()
+    '''Reemplazar el retorno de carro (\n) final por nada'''
+    data = [row.replace('\n','')for row in data]
+    '''Se sacan los elementos de la primera y quinta columna'''
+    letter = [(row.split('\t')[0],(row.split('\t')[-1])) for row in data]
+    '''Se saca una lista con las letras unicas y ordenadas con el uso de set'''
+    listletter = set([row.split('\t')[0] for row in data])
+    '''Se crea una lista vacia donde voy a ir guardando el resultado'''
+    result = []
+    for i in letter:
+        temporal = i[1].split(",")
+        for h in temporal:
+            tempo = int(h.split(":")[1])
+            a= (i[0], tempo)
+            result.append(a)
+    dicc = {}
+    for row in result:
+            clave = row[0]
+            valor = []
+            val = int(row[1])
+            if clave in dicc:
+                dicc[clave] += val
+            else:
+                dicc[clave] = val
+    '''Se ordena el diccionario en orden alfabetico'''
+    xy = dict(sorted(dicc.items(), key=lambda item: item[0]))
+    
+    return xy
