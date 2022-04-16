@@ -524,4 +524,33 @@ def pregunta_12():
     }
 
     """
-    return
+    import csv
+    with open ("data.csv","r") as file:
+        data = file.readlines()
+    '''Reemplazar el retorno de carro (\n) final por nada'''
+    data = [row.replace('\n','')for row in data]
+    '''Se sacan los elementos de la primera y quinta columna'''
+    letter = [(row.split('\t')[0],(row.split('\t')[-1])) for row in data]
+    '''Se saca una lista con las letras unicas y ordenadas con el uso de set'''
+    listletter = set([row.split('\t')[0] for row in data])
+    '''Se crea una lista vacia donde voy a ir guardando el resultado'''
+    result = []
+    for i in letter:
+        temporal = i[1].split(",")
+        for h in temporal:
+            tempo = int(h.split(":")[1])
+            a= (i[0], tempo)
+            result.append(a)
+    dicc = {}
+    for row in result:
+            clave = row[0]
+            valor = []
+            val = int(row[1])
+            if clave in dicc:
+                dicc[clave] += val
+            else:
+                dicc[clave] = val
+    '''Se ordena el diccionario en orden alfabetico'''
+    xy = dict(sorted(dicc.items(), key=lambda item: item[0]))
+    
+    return xy
